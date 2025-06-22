@@ -20,7 +20,7 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	connStr := fmt.Sprintf("postgres://%s:%s@dpg-d1c7auje5dus73f9n0bg-a:5432/%s?sslmode=disable",
+	connStr := fmt.Sprintf("postgres://%s:%s@dpg-d1c7auje5dus73f9n0bg-a.oregon-postgres.render.com:5432/%s?sslmode=disable",
 		cfg.DBUser, cfg.DBPassword, cfg.DBName)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
