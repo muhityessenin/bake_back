@@ -11,7 +11,6 @@ import (
 
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
-	"github.com/pressly/goose/v3"
 )
 
 func main() {
@@ -27,11 +26,6 @@ func main() {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 	defer db.Close()
-
-	if err := goose.Up(db, "migrations"); err != nil {
-		log.Fatalf("Failed to apply migrations: %v", err)
-	}
-	log.Println("Migrations applied successfully")
 
 	repo := repository.NewPostgresRepository(db)
 	handler := api.NewHandler(repo)
